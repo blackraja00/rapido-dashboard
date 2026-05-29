@@ -583,24 +583,37 @@ export default function App() {
               >
                 {f[1]}
               </div>
-
-              <input
-                value={form[f[0]]}
-                onChange={(e) =>
-                  setForm({
-                    ...form,
-                    [f[0]]: e.target.value,
-                  })
-                }
-                style={{
-                  width: "100%",
-                  padding: 12,
-                  borderRadius: 12,
-                  border: "1px solid #334155",
-                  background: "#020617",
-                  color: "#fff",
-                }}
-              />
+<input
+  type={
+    f[0] === "date"
+      ? "date"
+      : [
+          "loginHours",
+          "totalOrders",
+          "earningWithoutIncentive",
+          "incentive",
+          "expenses",
+          "totalKm",
+        ].includes(f[0])
+      ? "number"
+      : "text"
+  }
+  value={form[f[0]]}
+  onChange={(e) =>
+    setForm({
+      ...form,
+      [f[0]]: e.target.value,
+    })
+  }
+  style={{
+    width: "100%",
+    padding: 12,
+    borderRadius: 12,
+    border: "1px solid #334155",
+    background: "#020617",
+    color: "#fff",
+  }}
+/>
             </div>
           ))}
 
